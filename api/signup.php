@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Signup</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,8 +12,7 @@
             height: 100vh;
             background-color: #f0f0f0;
         }
-
-        .login-container {
+        .signup-container {
             background-color: white;
             padding: 20px;
             border-radius: 5px;
@@ -26,22 +24,19 @@
             align-items: center;
             flex-direction: column;
         }
-
-        .login-container h2 {
+        .signup-container h2 {
             display: block;
             margin-bottom: 20px;
             text-align: center;
             width: 75%;
         }
-
-        .login-container label {
+        .signup-container label {
             display: block;
             margin-bottom: 5px;
             width: 75%;
 
         }
-
-        .login-container input {
+        .signup-container input {
             display: block;
             padding: 12px;
             margin-bottom: 10px;
@@ -49,58 +44,62 @@
             border-radius: 4px;
             width: 75%;
         }
-
-        .login-container input[type="submit"] {
+        .signup-container input[type="submit"] {
             background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
         }
-
-        .login-container input[type="submit"]:hover {
+        .signup-container input[type="submit"]:hover {
             background-color: #45a049;
         }
-
         .error {
             color: red;
             margin-top: 10px;
         }
     </style>
 </head>
-
 <body>
-    <div class="login-container">
-        <h2>Giriş Yap</h2>
-        <form id="loginForm">
+    <div class="signup-container">
+        <h2>Kayıt Ol</h2>
+        <form id="signupForm">
             <label for="username">Kullanıcı Adı:</label>
             <input type="text" id="username" name="username" required><br><br>
             <label for="password">Şifre:</label>
             <input type="password" id="password" name="password" required><br><br>
-            <input type="submit" value="Giriş Yap">
+            <input type="submit" value="Kayıt Ol">
             <div>
-                <p>Hesabın yok mu? <a href="signup.php">Kayıt Ol</a< /p>
+                <p><a href="index.php">Giriş</a</p>
             </div>
         </form>
         <div class="error" id="error"></div>
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
+        document.getElementById('signupForm').addEventListener('submit', async function(event) {
             event.preventDefault();
-
-            const savedUsername = localStorage.getItem('username');
-            const savedPassword = localStorage.getItem('password');
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
+            await localStorage.setItem('username', username)
 
-            if (savedUsername === username && savedPassword === password) {
-                window.location.href = 'process.php';
-            }
-            else {
-                document.getElementById('error').textContent = 'Hatalı kullanıcı adı veya şifre';
-            }
+            await localStorage.setItem('password', password)
+            window.location.href = 'index.php'
+
+            
+            // const correctUsername = 'admin';
+            // const correctPassword = '12345';
+            
+            // const username = document.getElementById('username').value;
+            // const password = document.getElementById('password').value;
+
+            // if (username === correctUsername && password === correctPassword) {
+            //     // Giriş başarılı
+            //     window.location.href = 'process.php';
+            // } else {
+            //     // Giriş başarısız
+            //     document.getElementById('error').textContent = 'Hatalı kullanıcı adı veya şifre';
+            // }
         });
     </script>
 </body>
-
 </html>
