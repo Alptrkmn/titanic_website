@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maternal Health Risk Predictor</title>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <link rel="stylesheet" type="text/css" href="./src/style.css">
+    <link rel="stylesheet" type="text/css" href="../src/style.css">
 </head>
 <body>
 
